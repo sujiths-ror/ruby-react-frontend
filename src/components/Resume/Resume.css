@@ -1,0 +1,27 @@
+/* Resume Css */
+
+
+
+.navbar-nav .nav-item:last-child .nav-link{
+  margin-right: -15px;
+}
+
+.navbar-brand{
+  color:white;
+  font-weight: 600;
+  font-size:36px;
+}  
+
+.nastyl{
+  position: "fixed";
+    top: "0px";
+    z-index:"2";
+    width: "100%";
+}
+
+.signbutton{
+  background: "none";
+  border: "1px solid";
+  border-radius: "34px";
+
+}
