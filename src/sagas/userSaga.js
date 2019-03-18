@@ -21,7 +21,10 @@
    DELETE_QUESTIONS,
    EDIT_QUESTIONS,
    EDIT_QUESTIONS_SUCCEED,
-   EDIT_QUESTIONS_FAILED
+   EDIT_QUESTIONS_FAILED,
+   GET_IND_QUESTIONS,
+   GET_IND_QUESTIONS_SUCCEED,
+   GET_IND_QUESTIONS_FAILED,
  } from '../ActionTypes';
  import {
    getQuestions,
@@ -29,7 +32,8 @@
    getRoles,
    getMappings,
    deleteQuestions,
-   editQuestions
+   editQuestions,
+   getIndQuestions
  } from '../api/user';
 
 
@@ -56,6 +60,31 @@
      });
    }
  }
+
+ const getIndQuestionsData = function* (action) {
+  try {
+    const response = yield call(getIndQuestions, action.data);
+    const data = response.data;
+
+    if (response.statusText === "OK") {
+      yield put({
+        type: GET_IND_QUESTIONS_SUCCEED,
+        data
+      });
+    } else
+      yield put({
+        type: GET_IND_QUESTIONS_FAILED,
+        data
+      });
+  } catch (e) {
+    yield put({
+      type: GET_IND_QUESTIONS_FAILED,
+      message: e.message
+    });
+  }
+}
+
+
 
  const getRolesData = function* (action) {
    try {
@@ -187,5 +216,6 @@
    takeLatest(GET_MAPPINGS, getMappingsData),
    takeLatest(POST_QUESTIONS, postQuestionsData),
    takeLatest(DELETE_QUESTIONS, deleteQuestionsData),
-   takeLatest(EDIT_QUESTIONS, editQuestionsData)
+   takeLatest(EDIT_QUESTIONS, editQuestionsData),
+   takeLatest(GET_IND_QUESTIONS,getIndQuestionsData)
  ]

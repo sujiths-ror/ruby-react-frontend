@@ -1,4 +1,4 @@
-import { GET_QUESTIONS,POST_QUESTIONS,GET_ROLES,GET_MAPPINGS, DELETE_QUESTIONS, EDIT_QUESTIONS} from '../ActionTypes';
+import { GET_IND_QUESTIONS,GET_QUESTIONS,POST_QUESTIONS,GET_ROLES,GET_MAPPINGS, DELETE_QUESTIONS, EDIT_QUESTIONS} from '../ActionTypes';
 
 
 
@@ -42,5 +42,12 @@ export const editQuestions = (data) =>{
   return{
     type:EDIT_QUESTIONS,
     data
+  }
+}
+
+export const getIndQuestions = () =>{
+  return{
+    type:GET_IND_QUESTIONS,
+
   }
 }

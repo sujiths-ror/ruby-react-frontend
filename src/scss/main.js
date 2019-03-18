@@ -781,16 +781,6 @@ export default StyleSheet.create({
     'left': [{ 'unit': 'px', 'value': 0 }],
     'marginRight': [{ 'unit': 'px', 'value': 5 }]
   },
-  'eo-nav-admin': {
-    'width': [{ 'unit': '%H', 'value': 1 }]
-  },
-  'eo-nav-admin navbar-nav': {
-    'float': 'left',
-    'marginTop': [{ 'unit': 'px', 'value': 5 }]
-  },
-  'eo-nav-admin form-inline': {
-    'float': 'right'
-  },
   'eo-content': {
     'marginLeft': [{ 'unit': '%H', 'value': 0.36 }],
     'position': 'relative',
@@ -830,9 +820,6 @@ export default StyleSheet.create({
     'marginLeft': [{ 'unit': 'px', 'value': 12 }],
     'backgroundColor': 'green',
     'color': 'white'
-  },
-  'btsb': {
-    'marginBottom': [{ 'unit': '%V', 'value': 0.5 }]
   },
   'btn-addons': {
     'borderTopRightRadius': '2px',
@@ -874,9 +861,6 @@ export default StyleSheet.create({
     'borderColor': '#a07207',
     'color': '#ffffff'
   },
-  'ddd': {
-    'width': [{ 'unit': 'px', 'value': 431 }]
-  },
   'inputBox': {
     'borderRadius': '3px',
     'borderStyle': 'solid',
@@ -898,12 +882,6 @@ export default StyleSheet.create({
   'radioButton': {
     'marginTop': [{ 'unit': 'px', 'value': 4 }],
     'marginInlineStart': '16px'
-  },
-  'sample': {
-    'height': [{ 'unit': 'px', 'value': 47 }]
-  },
-  'marginTop': {
-    'marginTop': [{ 'unit': 'px', 'value': 17 }]
   },
   'buttonPosition': {
     'marginInlineStart': '49%'
@@ -945,9 +923,6 @@ export default StyleSheet.create({
     'borderTop': [{ 'unit': 'px', 'value': 1 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': '#d2d2d2' }],
     'borderBottomRightRadius': '10px'
   },
-  'modal-footer': {
-    'marginTop': [{ 'unit': 'px', 'value': 14 }]
-  },
   'shadow': {
     'WebkitBoxShadow': '3px 3px 5px 6px #ccc',
     // Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+
@@ -955,5 +930,17 @@ export default StyleSheet.create({
     // Firefox 3.5 - 3.6
     'boxShadow': [{ 'unit': 'px', 'value': 3 }, { 'unit': 'px', 'value': 3 }, { 'unit': 'px', 'value': 5 }, { 'unit': 'px', 'value': 6 }, { 'unit': 'string', 'value': '#ccc' }],
     // Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5
+  },
+  'options': {
+    'width': [{ 'unit': 'px', 'value': 131 }],
+    'height': [{ 'unit': 'px', 'value': 33 }],
+    'border': [{ 'unit': 'string', 'value': 'none' }]
+  },
+  'm-content': {
+    'padding': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
+    'marginLeft': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'styles_modal__gNwvD': {
+    'height': [{ 'unit': 'string', 'value': 'auto' }]
   }
 });

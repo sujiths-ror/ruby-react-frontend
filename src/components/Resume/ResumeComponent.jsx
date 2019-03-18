@@ -165,7 +165,7 @@ const ResumeComponent = props => (
                   <div className="right">
                     <div className="form-group" onChange={e => props.handleChangeRadio(e)} >
                       
-                        <input type="radio" name="true"  value={true} defaultChecked  />  <span>True</span>
+                        <input type="radio" name="true"   value={true} defaultChecked  />  <span>True</span>
                         <input type="radio" name="false"  value={false}  />  <span>False</span>
 
                       

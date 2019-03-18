@@ -9,7 +9,7 @@ export const performRequest = (method, url, params, auth,data) => {
    url,
    baseURL: API_URL,
    headers: {
-    accept: 'application/json',
+    'Accept': 'application/json'
   },
    [body]: params || {}
  }

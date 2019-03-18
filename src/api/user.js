@@ -4,7 +4,17 @@ import {
 
 export const getQuestions = async (data) => {
   try {
-    const response = await performRequest('get', 'v1/questions.json', data, null);
+    const response = await performRequest('get', 'v1/questions.json/', data, null);
+    return response;
+  } catch (e) {
+    return e.response;
+  }
+}
+
+export const getIndQuestions = async (data) => {
+  const id = localStorage.getItem("id")
+  try {
+    const response = await performRequest('get', 'v1/questions/' + id, null);
     return response;
   } catch (e) {
     return e.response;
@@ -49,7 +59,7 @@ export const deleteQuestions = async (id, data) => {
   try {
 
 
-    const response = await performRequest('delete', 'v1/questions/' + id, data, null);
+    const response = await performRequest('delete', 'v1/questions' + id, data, null);
 
     return response;
   } catch (e) {
@@ -60,9 +70,9 @@ export const deleteQuestions = async (id, data) => {
 
 }
 
-export const editQuestions = async (id, data) => {
+export const editQuestions = async ( data,id) => {
   try {
-    const response = await performRequest('patch', 'v1/questions/' + id, data, '.json', null);
+    const response = await performRequest('patch', 'v1/questions'+id , data, null);
 
     return response;
   } catch (e) {

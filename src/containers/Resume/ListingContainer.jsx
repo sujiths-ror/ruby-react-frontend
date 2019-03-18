@@ -14,7 +14,7 @@ class ListingContainer extends Component {
     super(props);
     this.state = {
       open: false,
-      question: {
+      DeleteOpen:false,
         question: "",
         priority: null,
         teaming_stages: "",
@@ -26,8 +26,6 @@ class ListingContainer extends Component {
         role_id: null,
         mapping_id: null,
 
-      },
-
       edit: false,
 
     }
@@ -36,7 +34,7 @@ class ListingContainer extends Component {
     this.handleEditSave = this.handleEditSave.bind(this)
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeMappings = this.handleChangeMappings.bind(this)
-    this.onSubmit = this.onSubmit.bind(this);
+   
     this.handleChangeRoles = this.handleChangeRoles.bind(this);
     this.handleChangeRadio = this.handleChangeRadio.bind(this);
     this.handleEdit = this.handleEdit.bind(this)
@@ -48,12 +46,83 @@ class ListingContainer extends Component {
     await this.props.getQuestions();
     await this.props.getRoles();
     await this.props.getMappings();
+    this.setState({
+      question: this.props.questiond.question,
+    })
   }
 
   UNSAFE_componentWillReceiveProps() {
     this.props.getQuestions();
 
   }
+
+
+handleChangeQuestion =(value) =>{
+  this.setState({
+    ...this.state,
+    question: { ...this.state.question, question: value } })
+}
+
+handleChangePriority = (value) =>{
+  this.setState({
+    ...this.state,
+    priority: { ...this.state, question: value } })
+}
+ 
+
+handleChangeTeamingStages = (value) => {
+  this.setState({
+    ...this.state,
+    teaming_stages: { ...this.state, teaming_stages: value } })
+}
+
+handleChangeAppears = (value) => {
+  this.setState({
+    ...this.state,
+    appears: { ...this.state, appears: value } })
+}
+
+handleChangeQuestionType = (value) => {
+  this.setState({
+    ...this.state,
+    appears: { ...this.state, question_type: value } })
+}
+
+
+handleChangeRequired = (value) => {
+  this.setState({
+    ...this.state,
+    appears: { ...this.state, required: value } })
+}
+
+handleChangeConditions = (value) => {
+  this.setState({
+    ...this.state,
+    conditions: { ...this.state, conditions: value } })
+}
+
+handleChangeFrequency = (value) => {
+  this.setState({
+    ...this.state,
+    frequency: { ...this.state, frequency: value } })
+}
+
+handleChangeRole = (value) => {
+  this.setState({
+    ...this.state,
+    role_id: { ...this.state, role_id: value } })
+}
+
+
+handleChangeMapping = (value) => {
+  this.setState({
+    ...this.state,
+    mapping_id: { ...this.state, mapping_id: value } })
+}
+
+
+
+
 
 
   setRedirect = () => {
@@ -64,19 +133,15 @@ class ListingContainer extends Component {
   async handleDelete(id) {
 
     await this.props.deleteQuestions(id);
-
-
-
   }
 
 
   async  handleEdit(id, value) {
     this.setState({ edit: true, id });
-
-
-
-
   }
+
+
+ 
 
   handleChange(key, value) {
     this.setState({
@@ -86,15 +151,6 @@ class ListingContainer extends Component {
 
   }
 
-  async onSubmit(e) {
-    e.preventDefault();
-    const { question } = this.state;
-    var questions = {
-      question: {
-        question
-      }
-    }
-  }
 
   async  handleEditSave(id) {
 
@@ -104,7 +160,7 @@ class ListingContainer extends Component {
         question
       }
     }
-    await this.props.editQuestions(id);
+    await this.props.editQuestions( questions,id);
 
 
   }
@@ -154,15 +210,49 @@ class ListingContainer extends Component {
   }
 
 
+
+  onOpenModal = () => {
+    this.setState({ open: true });
+    };
+    
+    onCloseModal = () => {
+    this.setState({ open: false});
+    };
+
   render() {
 
-    const { question, value, edit, id, } = this.state
+    const { question, value, edit, id,open } = this.state
+
+
     return (
       <div>
 
 
 
-        <ListingComponent id={id} questions={this.props.question} question={question} roles={this.props.roles} mappings={this.props.mappings} handleChange={this.handleChange} handleChangeMappings={this.handleChangeMappings} onSubmit={this.onSubmit} handleChangeRoles={this.handleChangeRoles} handleChangeRadio={this.handleChangeRadio} setRedirect={this.setRedirect} handleDelete={this.handleDelete} handleEdit={this.handleEdit} edit={edit} handleEditSave={this.handleEditSave} />
+        <ListingComponent id={id} open={open} questions={this.props.question} question={question} roles={this.props.roles} mappings={this.props.mappings} handleChange={this.handleChange} 
+        handleChangeMappings={this.handleChangeMappings} 
+        onSubmit={this.onSubmit} 
+        handleChangeRoles={this.handleChangeRoles} 
+        handleChangeRadio={this.handleChangeRadio} 
+        setRedirect={this.setRedirect} 
+        handleDelete={this.handleDelete} 
+        handleEdit={this.handleEdit} 
+        edit={edit} 
+        handleEditSave={this.handleEditSave} 
+        onOpenModal ={this.onOpenModal}
+        onCloseModal= {this.onCloseModal}
+        handleChangeQuestion = {this.handleChangeQuestion} 
+        handleChangePriority ={this.handleChangePriority}
+        handleChangeTeamingStages ={this.handleChangeTeamingStages}
+        handleChangeAppears = {this.handleChangeAppears}
+        handleChangeQuestionType = {this.handleChangeQuestionType} 
+        handleChangeRequired  = {this.handleChangeRequired } 
+        handleChangeConditions = {this.handleChangeConditions}
+        handleChangeFrequency = {this.handleChangeFrequency}
+        handleChangeRole ={this.handleChangeRole}
+        handleChangeMapping ={this.handleChangeMapping}
+
+          />
       </div>
     )
   }
@@ -172,7 +262,7 @@ const mapStateToProps = state => ({
   question: state.user.question,
   roles: state.user.roles,
   mappings: state.user.mappings,
-
+  questiond: state.user.questiond,
 
 });
 

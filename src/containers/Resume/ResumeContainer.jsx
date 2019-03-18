@@ -40,6 +40,10 @@ class ResumeContainer extends Component {
     this.handleChangeRadio = this.handleChangeRadio.bind(this)
   }
 
+
+
+ 
+
   handleChange(key, value) {
     this.setState({
       ...this.state,

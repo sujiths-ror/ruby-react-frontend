@@ -1,10 +1,12 @@
-import { GET_QUESTIONS_SUCCEED,GET_QUESTIONS_FAILED,GET_ROLES_SUCCEED,GET_ROLES_FAILED,GET_MAPPINGS_SUCCEED,GET_MAPPINGS_FAILED } from '../ActionTypes';
+import { GET_IND_QUESTIONS_SUCCEED,GET_IND_QUESTIONS_FAILED,GET_QUESTIONS_SUCCEED,GET_QUESTIONS_FAILED,GET_ROLES_SUCCEED,GET_ROLES_FAILED,GET_MAPPINGS_SUCCEED,GET_MAPPINGS_FAILED } from '../ActionTypes';
 
 const initialState = {
  
   question: [],
   roles : [],
   mappings:[],
+  questiond: [],
+  
 }
 
 export default (state = initialState, action) => {
@@ -27,7 +29,13 @@ export default (state = initialState, action) => {
       case GET_MAPPINGS_FAILED :
           return  { ...state, errors: data.message, mappings: false };
 
-      
+        case GET_IND_QUESTIONS_SUCCEED:
+       
+    
+          return { ...state, questiond: data.data.question, errors: null };
+          
+        case GET_IND_QUESTIONS_FAILED :
+           return  { ...state, errors: data.message, questiond: false };
 
     default:
       return state
