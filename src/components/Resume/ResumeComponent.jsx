@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const ResumeComponent = props => (
   <div>
-    {console.log(">>>>>",props)}
+  
     <section className="eo-content">
 
     <div className="left row w-100">
@@ -163,10 +163,10 @@ const ResumeComponent = props => (
                 <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 left text-right">
 
                   <div className="right">
-                    <div className="form-group" value={props.question.required} onChange={e =>props.handleChangeRadio("required",e.target.value)}>
+                    <div className="form-group" onChange={e => props.handleChangeRadio(e)} >
                       
-                        <input type="radio" name="required" value="True" checked />  <span>True</span>
-                        <input type="radio" name="required" value="False"  />  <span>False</span>
+                        <input type="radio" name="true"  value={true} defaultChecked  />  <span>True</span>
+                        <input type="radio" name="false"  value={false}  />  <span>False</span>
 
                       
                     </div>

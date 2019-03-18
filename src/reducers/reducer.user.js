@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
            return  { ...state, errors: data.message, roles: false };
       
       case GET_MAPPINGS_SUCCEED:
-           console.log("data",data)
+    
           return { ...state, mappings: data.data.mappings, errors: null };
       case GET_MAPPINGS_FAILED :
           return  { ...state, errors: data.message, mappings: false };

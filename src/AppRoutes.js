@@ -49,7 +49,7 @@ const AppRoutes = () =>
       <Switch>
       <Route exact path="/" component={ResumeContainer}/>
       <Route  path="/view" component={ListingContainer}/>
-  
+      <Route  path="/view-m" component={ListingContainer}/>
         
       </Switch>
     </ConnectedRouter>
