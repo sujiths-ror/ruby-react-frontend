@@ -46,9 +46,8 @@ class ListingContainer extends Component {
     await this.props.getQuestions();
     await this.props.getRoles();
     await this.props.getMappings();
-    this.setState({
-      question: this.props.questiond.question,
-    })
+   this.handleChangeQuestion(this.props.questiond.question)
+  
   }
 
   UNSAFE_componentWillReceiveProps() {
