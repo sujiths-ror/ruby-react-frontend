@@ -8,8 +8,7 @@
 .DS_Store
 .env.local
 .env.development.local
-.env.test.local
-.env.production.local
+
 node_modules/
 
 npm-debug.log*
@@ -19,7 +18,7 @@ yarn-error.log*
 #ignore system folders
 .idea/
 .vscode/
-.env
+
 
 #ignore system files
 package-lock.json
