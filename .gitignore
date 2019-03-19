@@ -22,3 +22,9 @@ yarn-error.log*
 
 #ignore system files
 yarn.lock
+
+
+src/*
+public/*
+build/static/css/*.map
+build/static/js/*.map
