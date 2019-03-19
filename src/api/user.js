@@ -70,9 +70,10 @@ export const deleteQuestions = async (id, data) => {
 
 }
 
-export const editQuestions = async ( data,id) => {
+export const editQuestions = async ( data) => {
+  const id = localStorage.getItem("id")
   try {
-    const response = await performRequest('patch', 'v1/questions'+id , data, null);
+    const response = await performRequest('patch', 'v1/questions/'+id , data, null);
 
     return response;
   } catch (e) {

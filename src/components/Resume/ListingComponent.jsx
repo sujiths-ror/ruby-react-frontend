@@ -49,7 +49,19 @@ class ListComponent extends Component{
           handleChangeConditions,
           handleChangeFrequency,
           handleChangeRole,
-          handleChangeMapping}=this.props;
+          handleChangeMapping,
+          teaming_stagesEdit,
+          appearsEdit,
+          question_typeEdit,
+          requiredEdit,
+          conditionsEdit,
+          frequencyEdit,
+          role_idEdit,
+          mapping_idEdit,
+          questionEdit ,
+          priorityEdit 
+        
+        }=this.props;
         const { open } = this.state;
         return(
             <div > 
@@ -111,128 +123,48 @@ class ListComponent extends Component{
                          {e.index}
                        </label>
                      
-                   {/* </td>{(edit==true && id==e.id )?<td data-head="Defect_Class">
-                  <input type="text"  className="form-control" defaultValue={e.question} />
-                   </td>:<td data-head="Defect_Class"> */}
+                 
                    {e.question}
                    </td>
                    
-{/* 
-                   {(edit==true && id == e.id )?
-                   <td data-head="Defect_Class">
-                    <input type="number"   className="form-control" defaultValue={e.priority} /></td>: */}
                    <td data-head="For Product">
                    {e.priority}
                    </td>
-{/* 
-                   {(edit==true && id==e.id )?<td data-head="Defect_Class">
-                      <select className="options" value={question.teaming_stages} defaultValue={e.teaming_stages}  onChange={e =>handleChange("teaming_stages",e.target.value)}>
-                        <option value="volvo">---</option>
-                        <option value="norming">Norming</option>
-                        <option value="forming">Forming</option>
-                        <option value="performing">Performing</option>
-                        <option value="all">All</option>
 
-                      </select>
-                    </td>: */}
                 
                    <td data-head="Description">
                      {e.teaming_stages}
                    </td>
 
 
-                   {/* {(edit==true && id==e.id )?<td data-head="Defect_Class">
-                   
-                   <input type="text"  className="form-control" name="appears" defaultValue={e.appears} onChange={e =>handleChange("appears",e.target.value)}  />
-                   </td>: */}
                    <td data-head="Is Acceptable">
                      {e.appears}
                    </td>
 
-
-                   {/* {(edit==true && id==e.id )?<td data-head="Defect_Class">
-                   <input type="number" className="form-control" defaultValue={e.frequency}
-                      name="frequency"
-                      onChange={e =>handleChange("frequency",e.target.value)}  />
-                   </td>: */}
                    <td data-head="Is Acceptable">
                      {e.frequency}
                    </td>
-{/* 
-                   {(edit==true && id==e.id )?<td data-head="Defect_Class"><select className="options" value={question.question_type} defaultValue={e.question_type} onChange={e =>handleChange("question_type",e.target.value)}>
-                        <option value="volvo">---</option>
-                        <option value="Rating Scale">Rating Scale</option>
 
-                      </select></td>: */}
                    <td data-head="Is Acceptable">
                      {e.question_type}
                    </td>
 
-{/* 
-                   {(edit==true && id==e.id )?<td data-head="Defect_Class">
-                   
-                   <select className="options"  defaultValue={e.role_id} value={question.roles}
-                      onChange={(e)=>
-                        handleChangeRoles(e.target.value)
-                      } >
-                     
-                      {(roles).map(e=>
-                        <option >{e.name}</option> 
-                        ) }
-                      </select>
-                    </td>: */}
+
                    <td data-head="Is Acceptable">
                      {e.role_id}
                    </td>
 
-                   {/* {(edit==true && id==e.id )?<td data-head="Defect_Class">
-                   <div className="form-group" value={question.required} defaultValue={e.required} onChange={e =>handleChangeRadio("required",e.target.value)}>
-                      
-                        <input type="radio" name="required" value="True" checked />  <span>True</span>
-                        <input type="radio" name="required" value="False"  />  <span>False</span>
-
-                      
-                    </div>
-                   
-                   </td>: */}
+                
                    <td data-head="Is Acceptable">
                      {e.required}
                    </td>
 
-{/* 
-                   {(edit==true && id==e.id )?<td data-head="Defect_Class">
-                   <select className="options" value={question.conditions} defaultValue={e.conditions}  onChange={(e) =>handleChange("conditions",e.target.value)}>
-                      
-                      <option>always</option>
-                      <option>rare</option>
-                      <option>Medium</option>
-                        
-                        
 
-                      </select>
-                   
-                   </td>: */}
                    <td data-head="Is Acceptable">
                      {e.conditions}
                    </td>
 
 
-{/* 
-                   {(edit == true && id == e.id )?<td data-head="Defect_Class">
-                   
-                   <select className="options" 
-                      name="mappings"
-                      defaultValue = {question.mappings}
-                      value = {question.mappings}
-                      onChange = {(e) =>
-                        handleChangeMappings(e.target.value)
-                      } >
-                    
-                      {(mappings).map(e=>
-                        <option > {e.name} </option>)}
-                      </select>
-                   
-                   </td>: */}
                    <td data-head="Is Acceptable">
                      {e.mapping_id}
                    </td>
@@ -278,9 +210,9 @@ class ListComponent extends Component{
                   <input type="text"
                    className="form-control" 
                    name="question"
-                   value={question.question}
-                   onChange={e =>
-                     handleChangeQuestion(e.target.name, e.target.value)
+                   value={questionEdit}
+                   onChange={(e) =>
+                     handleChangeQuestion(e)
                    }
                     />
                 </div>
@@ -297,9 +229,9 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                <select className="options" value={question.question_type} onChange={e =>handleChangeQuestionType("question_type",e.target.value)}>
+                <select className="options" value={question_typeEdit} onChange={e =>handleChangeQuestionType(e.target.value)}>
                     <option value="volvo">---</option>
-                    <option value="Rating Scale">Rating Scale</option>
+                    <option value={question_typeEdit}>{question_typeEdit}</option>
 
                   </select>
                 </div>
@@ -319,9 +251,9 @@ class ListComponent extends Component{
                 <div className="form-group">
                 <input type="number" className="form-control" 
                 name="priority" 
-                value={question.priority}
+                value={priorityEdit}
                    onChange={e =>
-                     handleChangePriority(e.target.name, e.target.value)
+                     handleChangePriority( e)
                    }
                 id="ques" />
                 </div>
@@ -338,7 +270,7 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                  <select className="options" value={question.teaming_stages}  onChange={e =>handleChangeTeamingStages("teaming_stages",e.target.value)}>
+                  <select className="options" value={teaming_stagesEdit}  onChange={e =>handleChangeTeamingStages(e)}>
                     <option value="volvo">---</option>
                     <option value="norming">Norming</option>
                     <option value="forming">Forming</option>
@@ -359,7 +291,7 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                  <input type="text"  className="form-control" name="appears" onChange={e =>handleChangeAppears("appears",e.target.value)}  />
+                  <input type="text"  className="form-control" value={appearsEdit} name="appears" onChange={e =>handleChangeAppears(e)}  />
                 </div>
               </div>
             </div>
@@ -375,7 +307,8 @@ class ListComponent extends Component{
                 <div className="form-group">
                   <input type="number" className="form-control" 
                   name="frequency"
-                  onChange={e =>handleChangeFrequency("frequency",e.target.value)}  />
+                  value={frequencyEdit}
+                  onChange={e =>handleChangeFrequency(e)}  />
                 </div>
               </div>
             </div>
@@ -389,9 +322,9 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                  <select className="options"  value={question.roles}
+                  <select className="options"  value={(role_idEdit==2)?"both":(role_idEdit==1)?"user":(role_idEdit == 3)?"admin":null}
                   onChange={(e)=>
-                    handleChangeRoles(e.target.value)
+                    handleChangeRole(e)
                   } >
                   <option >-----</option>
                   {(roles).map(e=>
@@ -413,7 +346,7 @@ class ListComponent extends Component{
             <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 left text-right">
 
               <div className="right">
-                <div className="form-group" onChange={e => handleChangeRequired(e)} >
+                <div className="form-group" value = {requiredEdit} onChange={e => handleChangeRequired(e)} >
                   
                     <input type="radio" name="true"   value={true} defaultChecked  />  <span>True</span>
                     <input type="radio" name="false"  value={false}  />  <span>False</span>
@@ -433,14 +366,12 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                  <select className="options" value={question.conditions}  onChange={(e) =>handleChangeConditions("conditions",e.target.value)}>
-                  <option >-----</option>
-                  <option>always</option>
-                  <option>rare</option>
-                  <option>Medium</option>
+                  <select className="options" value={conditionsEdit}  onChange={(e) =>handleChangeConditions(e)}>
+                  <option value="-----">-----</option>
+                  <option value="always">always</option>
+                  <option value="rare">rare</option>
+                  <option value="medium">Medium</option>
                     
-                    
-
                   </select>
                 </div>
               </div>
@@ -458,9 +389,9 @@ class ListComponent extends Component{
                 <div className="form-group">
                 <select className="options" 
                   name="mappings"
-                  value={question.mappings}
+                  value={(mapping_idEdit == 1) ? "collaboration":(mapping_idEdit == 2) ? "engagement":(mapping_idEdit == 3) ? "communication":(mapping_idEdit == 4)?"trust":(mapping_idEdit == 5)?"resources":"clarity"}
                   onChange={(e)=>
-                    handleChangeMappings(e.target.value)
+                    handleChangeMappings(e)
                   } >
                   <option >-----</option>
                   {(mappings).map(e=>
@@ -477,8 +408,8 @@ class ListComponent extends Component{
 </section>
         
          <div className="modal-footer text-center justify-content-center">
-           <button type="button" className="btn btn-info btn-radius-0 shadow min-w"  onClick= {this.props.onCloseModal}>Ok</button>
-           <button type="button" className="btn btn-theme btn-radius-0 shadow min-w" onClick={this.props.onCloseModal}>Cancel</button>
+           <button type="button" className="btn btn-info btn-radius-0 shadow min-w"  onClick= {handleEditSave}>Ok</button>
+           <button type="button" className="btn btn-theme btn-radius-0 shadow min-w" onClick={this.onCloseModal}>Cancel</button>
          </div>
          </Modal>
 
@@ -504,8 +435,7 @@ const mapStateToProps = state => ({
     
   }, dispatch);
 
-  ListComponent.propTypes = {
-    
+    ListComponent.propTypes = { 
     onCloseModal: PropTypes.func.isRequired,
     onOpenModal: PropTypes.func.isRequired,
     }

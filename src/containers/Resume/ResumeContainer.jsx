@@ -29,6 +29,8 @@ class ResumeContainer extends Component {
         mapping_id: null,
 
       },
+      radio1:false,
+      radio2:false,
 
       value: "",
       teaming_stages: ""
@@ -37,7 +39,10 @@ class ResumeContainer extends Component {
     this.handleChangeMappings = this.handleChangeMappings.bind(this)
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChangeRoles = this.handleChangeRoles.bind(this);
-    this.handleChangeRadio = this.handleChangeRadio.bind(this)
+    this.handleChangeRadio = this.handleChangeRadio.bind(this);
+     this.handleChangeTrue = this.handleChangeTrue.bind(this);
+     this.handleChangeFalse =  this.handleChangeFalse.bind(this);
+    //this.handleRadioButton = this.handleRadioButton.bind(this);
   }
 
 
@@ -51,6 +56,50 @@ class ResumeContainer extends Component {
     });
 
   }
+
+
+handleChangeTrue(e){
+  console.log("e",e.currentTarget.value)
+  console.log("required",...this.state.question,this.state.required)
+  this.setState({
+    ...this.state.question,
+      question: { ...this.state.question, required: e.currentTarget.value }
+  })
+  // console.log("radio1",this.state.radio1)
+  // console.log("radio2",this.state.radio2)
+  // this.setState({
+  //   radio1:this.state.radio1,
+  // });
+  // console.log("radio1",this.state.radio1)
+  // console.log("radio2",this.state.radio2)
+}
+
+handleChangeFalse(e){
+  console.log("e",e.currentTarget.value)
+  console.log("required",...this.state.question,!this.state.required)
+  this.setState({
+    ...this.state.question,
+      question: { ...this.state.question, required: !e.currentTarget.value }
+  })
+  // console.log("radio1",this.state.radio1)
+  //   console.log("radio2",this.state.radio2)
+  // this.setState({
+  //   radio2:true,
+  // });
+  // console.log("radio1",this.state.radio1)
+  //   console.log("radio2",this.state.radio2)
+}
+
+  // handleRadioButton() {
+  //   console.log("radio1",this.state.radio1)
+  //   console.log("radio2",this.state.radio2)
+  //   this.setState({
+  //     radio1:!this.state.radio1,
+  //     radio2:!this.state.radio2,
+  //   });
+  //   console.log("radio1",this.state.radio1)
+  //   console.log("radio2",this.state.radio2)
+  // }
 
   async onSubmit(e) {
     e.preventDefault();
@@ -115,10 +164,17 @@ class ResumeContainer extends Component {
   }
 
   render() {
-    const { question, value, required } = this.state
+    const { question, value, required,radio1,radio2 } = this.state
 
     return (
-      <ResumeComponent required={required} value={value} question={question} roles={this.props.roles} mappings={this.props.mappings} handleChange={this.handleChange} handleChangeMappings={this.handleChangeMappings} onSubmit={this.onSubmit} handleChangeRoles={this.handleChangeRoles} handleChangeRadio={this.handleChangeRadio}
+      <ResumeComponent required={required} value={value} question={question} roles={this.props.roles} mappings={this.props.mappings} handleChange={this.handleChange} handleChangeMappings={this.handleChangeMappings} onSubmit={this.onSubmit} 
+      handleChangeRoles={this.handleChangeRoles}
+       handleChangeRadio={this.handleChangeRadio}
+        handleChangeTrue = {this.handleChangeTrue}
+        handleChangeFalse = {this.handleChangeFalse}
+       //handleRadioButton = {this.handleRadioButton}
+       radio1={radio1}
+       radio2 = {radio2}
       />
     )
   }
