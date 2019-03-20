@@ -94,7 +94,7 @@ handleChangeFalse(e){
       }
     }
     await this.props.postQuestions(questions);
-    this.props.history.push('/view');
+    this.props.history.push('/');
   }
 
 

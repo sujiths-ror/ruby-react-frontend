@@ -47,8 +47,8 @@ const AppRoutes = () =>
     <div>
     <ConnectedRouter history={history}>
       <Switch>
-      <Route exact path="/" component={ResumeContainer}/>
-      <Route  path="/view" component={ListingContainer}/>
+      <Route exact path="/" component={ListingContainer}/>
+      <Route  path="/view" component={ResumeContainer}/>
       <Route  path="/view-m" component={ListingContainer}/>
         
       </Switch>
