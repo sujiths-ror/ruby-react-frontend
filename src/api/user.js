@@ -46,7 +46,7 @@ export const getMappings = async (data) => {
 
 export const postQuestions = async (data) => {
   try {
-    const response = await performRequest('post', 'v1/questions.json', data, null);
+    const response = await performRequest('post', 'v1/questions', data, null);
 
     return response;
   } catch (e) {
@@ -59,7 +59,7 @@ export const deleteQuestions = async (id, data) => {
   try {
 
 
-    const response = await performRequest('delete', 'v1/questions' + id, data, null);
+    const response = await performRequest('delete', 'v1/questions/' + id, data, null);
 
     return response;
   } catch (e) {

@@ -21,6 +21,9 @@ class ListComponent extends Component{
        
     }
 
+    
+    
+
     async onOpenModal(){
       await this.props.getIndQuestions();
       this.setState({ open: true });
@@ -170,7 +173,7 @@ class ListComponent extends Component{
 
                    
                    <td data-head="Action">
-                     <button className="btn btn-theme btn-sm" onClick={()=>handleDelete(e.id)}>DELETE</button>
+                     <button className="btn btn-theme btn-sm" onClick={()=>{handleDelete(e.id),localStorage.setItem ("delid",e.id)}}>DELETE</button>
                      {(edit == true)?<button className="btn btn-theme btn-sm" >Save</button>:
                      <button className="btn btn-theme btn-sm" onClick={()=>{this.onOpenModal() ,localStorage.setItem ("id",e.id)}}>EDIT</button>
                   

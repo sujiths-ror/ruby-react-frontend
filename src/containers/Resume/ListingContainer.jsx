@@ -48,7 +48,9 @@ class ListingContainer extends Component {
     this.handleEdit = this.handleEdit.bind(this)
   }
 
-
+  UNSAFE_componentWillUpdate( ){
+     this.props.getQuestions();
+  }
 
   async componentDidMount() {
     await this.props.getQuestions();
@@ -58,11 +60,11 @@ class ListingContainer extends Component {
   
   }
 
-  //   componentDidUpdate() {
-  //   this.props.getQuestions();
+  
 
-  //  }
-
+  forceUpdate(){
+    this.props.getQuestions();
+  }
 
 handleChangeQuestion =(e) =>{
   
@@ -182,6 +184,7 @@ handleChangeMapping = (e) => {
     
     await this.props.editQuestions( questions,id);
     this.setState({ open: false, });
+    
 
   }
 
