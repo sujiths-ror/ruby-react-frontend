@@ -34,7 +34,7 @@ class ListingContainer extends Component {
         teaming_stagesEdit: "",
         appearsEdit: "",
         question_typeEdit: "",
-        requiredEdit: false,
+        requiredEdit: true,
         conditionsEdit: null,
         frequencyEdit: null,
         role_idEdit: null,
@@ -44,9 +44,6 @@ class ListingContainer extends Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEditSave = this.handleEditSave.bind(this)
     this.handleChange = this.handleChange.bind(this);
-    this.handleChangeMappings = this.handleChangeMappings.bind(this)
-   
-    // this.handleChangeRoles = this.handleChangeRoles.bind(this);
     this.handleChangeRadio = this.handleChangeRadio.bind(this);
     this.handleEdit = this.handleEdit.bind(this)
   }
@@ -57,22 +54,21 @@ class ListingContainer extends Component {
     await this.props.getQuestions();
     await this.props.getRoles();
     await this.props.getMappings();
-   //this.handleChangeQuestion(this.props.questiond.question)
+  
   
   }
 
-  UNSAFE_componentWillReceiveProps() {
-    this.props.getQuestions();
+  //   componentDidUpdate() {
+  //   this.props.getQuestions();
 
-  }
+  //  }
 
 
 handleChangeQuestion =(e) =>{
-  console.log("value",e)
+  
   this.setState({questionEdit: e.target.value })
   console.log(this.state.questionEdit)
-    // ...this.state,
-    // question: { ...this.state.question, question: value } })
+   
 }
 
 handleChangePriority = (e) =>{
@@ -82,27 +78,29 @@ handleChangePriority = (e) =>{
 }
  
 
-handleChangeTeamingStages = (value) => {
-  this.setState({
-    ...this.state,
-    teaming_stages: { ...this.state, teaming_stages: value } })
+handleChangeTeamingStages = (e) => {
+  this.setState({ teaming_stagesEdit: e.target.value })
 }
 
 handleChangeAppears = (e) => {
   this.setState({ appearsEdit: e.target.value })
 }
 
-handleChangeQuestionType = (value) => {
-  this.setState({
-    ...this.state,
-    question_type: { ...this.state, question_type: value } })
+handleChangeQuestionType = (e) => {
+  this.setState({ question_typeEdit: e.target.value })
 }
 
 
-handleChangeRequired = (e) => {
-  this.setState({ requiredEdit: e.target.value })
+handleChangeRequiredTrue = (e) => {
+  
+  this.setState({ requiredEdit: e.currentTarget.value })
+ 
 }
-
+handleChangeRequiredFalse = (e) => {
+ 
+  this.setState({ requiredEdit: !e.currentTarget.value})
+  
+}
 handleChangeConditions = (e) => {
   this.setState({ conditionsEdit: e.target.value })
 }
@@ -112,13 +110,14 @@ handleChangeFrequency = (e) => {
 }
 
 handleChangeRole = (e) => {
-  console.log("rolessss===========>",e.target.value)
+
   this.setState({ role_idEdit: (e.target.value == "both") ? 2 : (e.target.value == "user") ? 1 : (e.target.value == "admin") ? 3 : null })
 }
 
 
 handleChangeMapping = (e) => {
-  this.setState({ mappingEdit: e.target.value })
+ 
+  this.setState({ mapping_idEdit: (e.target.value == "collaboration")? 1 :(e.target.value == "engagement")?2:(e.target.value == "communication")?3:(e.target.value == "trust")?4:(e.target.value == "resources")?5:(e.target.value == "clarity")?6:(e.target.value == "management")?7:null})
 }
 
 
@@ -151,33 +150,43 @@ handleChangeMapping = (e) => {
 
 
   async  handleEditSave(id) {
+    
+    var questionprops = this.props.questiond.question;
+    var priorityprops = this.props.questiond.priority;
+    var teamingProps = this.props.questiond.teaming_stages;
+    var appearsprops   = this.props.questiond.appears;
+    var conditionsprops =this.props.questiond.conditions;
+    
+    var frequencyprops = this.props.questiond.frequency;
+    var roleprops = this.props.questiond.role_id;
+    var mapprops =this.props.questiond.mapping_id;
+    var reqprops =this.props.questiond.required;
 
-    const { question } = this.state;
+
+
+       var question = {
+        "required":(this.state.requiredEdit == null)?reqprops:this.state.requiredEdit, 
+        "question":(this.state.questionEdit == "")?questionprops:this.state.questionEdit,
+       "priority": (this.state.priorityEdit == null)?priorityprops:this.state.priorityEdit,
+       "teaming_stages": (this.state.teaming_stagesEdit == ""||null)?teamingProps:this.state.teaming_stagesEdit,
+       "appears":  (this.state.appearsEdit == null)?appearsprops:this.state.appearsEdit,
+       "question_type": "Rating Scale",
+       "conditions": (this.state.conditionsEdit == "" || null)?conditionsprops:this.state.conditionsEdit,
+       "frequency": (this.state.frequencyEdit == null)?frequencyprops:this.state.frequencyEdit,
+       "role_id": (this.state.role_idEdit == null)? roleprops:this.state.role_idEdit,
+       "mapping_id": (this.state.mapping_idEdit == null)?mapprops:this.state.mapping_idEdit,
+       }
     var questions = {
-      question: {
         question
-      }
     }
-    this.setState({open:false})
+    
     await this.props.editQuestions( questions,id);
-   
-
-
-  }
-
-
-  handleChangeMappings(value) {
-    const Maps = this.props.mappings;
-    const retId = this.props.mappings.filter(id => id.name === value)
-    const SelectionId = retId.map(mapp => mapp.id)
-    const Id = parseInt(SelectionId);
-
-    this.setState({
-      ...this.state.question,
-      question: { ...this.state.question, mapping_id: Id }
-    });
+    this.setState({ open: false, });
 
   }
+
+
+  
 
   handleChangeRadio(value) {
 
@@ -190,19 +199,7 @@ handleChangeMapping = (e) => {
   }
 
 
-  // handleChangeRoles(value) {
-  //   const datas = this.props.roles
-  //   const RoleValue = this.props.roles.filter(id => id.name === value)
-  //   const SelectedRole = RoleValue.map(r => r.id)
-  //   const Id = parseInt(SelectedRole)
-
-  //   this.setState({
-  //     ...this.state.question,
-  //     question: { ...this.state.question, role_id: Id }
-  //   });
-
-
-  // }
+ 
 
   handleChangeOption(e) {
     this.setState({ value: e.target.value });
@@ -245,7 +242,8 @@ handleChangeMapping = (e) => {
         handleChangeTeamingStages ={this.handleChangeTeamingStages}
         handleChangeAppears = {this.handleChangeAppears}
         handleChangeQuestionType = {this.handleChangeQuestionType} 
-        handleChangeRequired  = {this.handleChangeRequired } 
+        handleChangeRequiredTrue  = {this.handleChangeRequiredTrue } 
+        handleChangeRequiredFalse  = {this.handleChangeRequiredFalse } 
         handleChangeConditions = {this.handleChangeConditions}
         handleChangeFrequency = {this.handleChangeFrequency}
         handleChangeRole ={this.handleChangeRole}
@@ -256,11 +254,11 @@ handleChangeMapping = (e) => {
         teaming_stagesEdit = {(this.state.teaming_stagesEdit == "")?this.props.questiond.teaming_stages:this.state.teaming_stagesEdit}
         appearsEdit = {(this.state.appearsEdit == "")?this.props.questiond.appears:this.state.appearsEdit}
         question_typeEdit = {(this.state.question_typeEdit == "")?this.props.questiond.question_type : this.state.question_typeEdit}
-        requiredEdit = {(this.state.requiredEdit == "")?this.props.questiond.required : this.state.requiredEdit}
+        requiredEdit = {this.state.requiredEdit}
         conditionsEdit = {(this.state.conditionsEdit == null)?this.props.questiond.conditions : this.state.conditionsEdit}
         frequencyEdit = {(this.state.frequencyEdit == null)?this.props.questiond.frequency: this.state.frequencyEdit}
-        role_idEdit = {(this.state.role_idEdit == "")?this.props.questiond.role_id : this.state.role_idEdit}
-        mapping_idEdit = {(this.state.mapping_idEdit == "")?this.props.questiond.mapping_id : this.state.mapping_idEdit}
+        role_idEdit = {(this.state.role_idEdit == null)?this.props.questiond.role_id : this.state.role_idEdit}
+        mapping_idEdit = {(this.state.mapping_idEdit == null)?this.props.questiond.mapping_id : this.state.mapping_idEdit}
         
           />
       </div>

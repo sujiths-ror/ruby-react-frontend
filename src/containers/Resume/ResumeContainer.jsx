@@ -81,26 +81,10 @@ handleChangeFalse(e){
     ...this.state.question,
       question: { ...this.state.question, required: !e.currentTarget.value }
   })
-  // console.log("radio1",this.state.radio1)
-  //   console.log("radio2",this.state.radio2)
-  // this.setState({
-  //   radio2:true,
-  // });
-  // console.log("radio1",this.state.radio1)
-  //   console.log("radio2",this.state.radio2)
+  
 }
 
-  // handleRadioButton() {
-  //   console.log("radio1",this.state.radio1)
-  //   console.log("radio2",this.state.radio2)
-  //   this.setState({
-  //     radio1:!this.state.radio1,
-  //     radio2:!this.state.radio2,
-  //   });
-  //   console.log("radio1",this.state.radio1)
-  //   console.log("radio2",this.state.radio2)
-  // }
-
+  
   async onSubmit(e) {
     e.preventDefault();
     const { question } = this.state;

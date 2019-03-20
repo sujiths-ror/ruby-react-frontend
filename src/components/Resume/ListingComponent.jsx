@@ -45,7 +45,8 @@ class ListComponent extends Component{
           handleChangeTeamingStages,
           handleChangeAppears,
           handleChangeQuestionType ,
-          handleChangeRequired,
+          handleChangeRequiredTrue,
+          handleChangeRequiredFalse,
           handleChangeConditions,
           handleChangeFrequency,
           handleChangeRole,
@@ -78,9 +79,6 @@ class ListComponent extends Component{
              <table className="table table-mob-res">
                <thead>
                  <tr>
-                   <th>
-                     #
-                   </th>
                    <th>
                    Question:
                    </th>
@@ -151,22 +149,23 @@ class ListComponent extends Component{
 
 
                    <td data-head="Is Acceptable">
-                     {e.role_id}
+                     {(e.role_id==3)?"admin":(e.role_id==1)?"user":(e.role_id==2)?"both":null}
                    </td>
 
                 
-                   <td data-head="Is Acceptable">
+                   <td data-head="required">
                      {e.required}
                    </td>
 
 
-                   <td data-head="Is Acceptable">
+                   <td data-head="conditions">
                      {e.conditions}
                    </td>
 
 
-                   <td data-head="Is Acceptable">
-                     {e.mapping_id}
+                   <td data-head="mapping">
+                   
+                     {(e.mapping_id ==1)? "collaboration":(e.mapping_id == 2) ? "engagement":(e.mapping_id == 3) ? "communication":(e.mapping_id == 4)?"trust":(e.mapping_id == 5)?"resources":(e.mapping_id == 6)?"clarity":null}
                    </td>
 
                    
@@ -189,7 +188,8 @@ class ListComponent extends Component{
 </div>
 
 <Modal 
-   open={open} onClose={this.onCloseModal} >
+   open={open} onClose={this.onCloseModal}
+    >
   <section className="eo-content m-content" style={{Padding:"0px"}}>
 
 <div className=" row ">
@@ -346,10 +346,10 @@ class ListComponent extends Component{
             <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 left text-right">
 
               <div className="right">
-                <div className="form-group" value = {requiredEdit} onChange={e => handleChangeRequired(e)} >
+                <div className="form-group"   >
                   
-                    <input type="radio" name="true"   value={true} defaultChecked  />  <span>True</span>
-                    <input type="radio" name="false"  value={false}  />  <span>False</span>
+                    <input type="radio" name="true"    value = {requiredEdit} checked = {requiredEdit} onChange={handleChangeRequiredTrue} />  <span>True</span>
+                    <input type="radio" name="false"  value =  {!requiredEdit} checked = {!requiredEdit}  onChange={handleChangeRequiredFalse}  />  <span>False</span>
 
                   
                 </div>
@@ -389,9 +389,9 @@ class ListComponent extends Component{
                 <div className="form-group">
                 <select className="options" 
                   name="mappings"
-                  value={(mapping_idEdit == 1) ? "collaboration":(mapping_idEdit == 2) ? "engagement":(mapping_idEdit == 3) ? "communication":(mapping_idEdit == 4)?"trust":(mapping_idEdit == 5)?"resources":"clarity"}
+                  value={(mapping_idEdit == 1) ? "collaboration":(mapping_idEdit == 2) ? "engagement":(mapping_idEdit == 3) ? "communication":(mapping_idEdit == 4)?"trust":(mapping_idEdit == 5)?"resources":(mapping_idEdit == 6)?"clarity":(mapping_idEdit == 7)?"management":null}
                   onChange={(e)=>
-                    handleChangeMappings(e)
+                    handleChangeMapping(e)
                   } >
                   <option >-----</option>
                   {(mappings).map(e=>
@@ -408,7 +408,9 @@ class ListComponent extends Component{
 </section>
         
          <div className="modal-footer text-center justify-content-center">
-           <button type="button" className="btn btn-info btn-radius-0 shadow min-w"  onClick= {handleEditSave}>Ok</button>
+           <button type="button" className="btn btn-info btn-radius-0 shadow min-w"  onClick={()=>{
+             handleEditSave();
+             this.onCloseModal()}} >Ok</button>
            <button type="button" className="btn btn-theme btn-radius-0 shadow min-w" onClick={this.onCloseModal}>Cancel</button>
          </div>
          </Modal>
