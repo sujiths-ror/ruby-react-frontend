@@ -221,7 +221,7 @@ const ResumeComponent = props => (
                 </div>
               </div>
 
-              <button type="submit" className="btn btn-primary" style={{marginLeft:'50%'}}>Submit</button>
+              <button type="submit" className="btn btn-primary" style={{marginLeft:'50%'}}>Create</button>
             </Form>
           </div>
         </div>

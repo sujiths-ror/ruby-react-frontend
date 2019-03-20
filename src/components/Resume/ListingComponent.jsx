@@ -413,7 +413,7 @@ class ListComponent extends Component{
          <div className="modal-footer text-center justify-content-center">
            <button type="button" className="btn btn-info btn-radius-0 shadow min-w"  onClick={()=>{
              handleEditSave();
-             this.onCloseModal()}} >Ok</button>
+             this.onCloseModal()}} >Update</button>
            <button type="button" className="btn btn-theme btn-radius-0 shadow min-w" onClick={this.onCloseModal}>Cancel</button>
          </div>
          </Modal>

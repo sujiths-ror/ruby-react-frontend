@@ -4,7 +4,7 @@ import {
 
 export const getQuestions = async (data) => {
   try {
-    const response = await performRequest('get', 'v1/questions.json/', data, null);
+    const response = await performRequest('get', 'v1/questions/', data, null);
     return response;
   } catch (e) {
     return e.response;
@@ -23,7 +23,7 @@ export const getIndQuestions = async (data) => {
 
 export const getRoles = async (data) => {
   try {
-    const response = await performRequest('get', 'v1/roles.json', data, null);
+    const response = await performRequest('get', 'v1/roles', data, null);
 
     return response;
   } catch (e) {
@@ -33,7 +33,7 @@ export const getRoles = async (data) => {
 
 export const getMappings = async (data) => {
   try {
-    const response = await performRequest('get', 'v1/mappings.json', data, null);
+    const response = await performRequest('get', 'v1/mappings', data, null);
 
     return response;
   } catch (e) {

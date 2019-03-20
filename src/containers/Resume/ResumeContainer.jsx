@@ -65,13 +65,6 @@ handleChangeTrue(e){
     ...this.state.question,
       question: { ...this.state.question, required: e.currentTarget.value }
   })
-  // console.log("radio1",this.state.radio1)
-  // console.log("radio2",this.state.radio2)
-  // this.setState({
-  //   radio1:this.state.radio1,
-  // });
-  // console.log("radio1",this.state.radio1)
-  // console.log("radio2",this.state.radio2)
 }
 
 handleChangeFalse(e){
@@ -89,9 +82,7 @@ handleChangeFalse(e){
     e.preventDefault();
     const { question } = this.state;
     var questions = {
-      question: {
-        question
-      }
+      question
     }
     await this.props.postQuestions(questions);
     this.props.history.push('/');
@@ -103,7 +94,7 @@ handleChangeFalse(e){
     const retId = this.props.mappings.filter(id => id.name === value)
     const SelectionId = retId.map(mapp => mapp.id)
     const Id = parseInt(SelectionId);
-
+console.log("---->",this.props)
     this.setState({
       ...this.state.question,
       question: { ...this.state.question, mapping_id: Id }
@@ -127,7 +118,7 @@ handleChangeFalse(e){
     const RoleValue = this.props.roles.filter(id => id.name === value)
     const SelectedRole = RoleValue.map(r => r.id)
     const Id = parseInt(SelectedRole)
-
+console.log("->--", Id )
     this.setState({
       ...this.state.question,
       question: { ...this.state.question, role_id: Id }
