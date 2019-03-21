@@ -140,7 +140,7 @@ console.log("->--", Id )
 
   render() {
     const { question, value, required,radio1,radio2 } = this.state
-
+    
     return (
       <ResumeComponent required={required} value={value} question={question} roles={this.props.roles} mappings={this.props.mappings} handleChange={this.handleChange} handleChangeMappings={this.handleChangeMappings} onSubmit={this.onSubmit} 
       handleChangeRoles={this.handleChangeRoles}

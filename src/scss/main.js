@@ -936,11 +936,23 @@ export default StyleSheet.create({
     'height': [{ 'unit': 'px', 'value': 33 }],
     'border': [{ 'unit': 'string', 'value': 'none' }]
   },
+  'options-form': {
+    'width': [{ 'unit': 'px', 'value': 461 }],
+    'height': [{ 'unit': 'px', 'value': 33 }],
+    'border': [{ 'unit': 'string', 'value': 'none' }]
+  },
+  'input-form': {
+    'width': [{ 'unit': 'px', 'value': 461 }, { 'unit': 'string', 'value': '!important' }]
+  },
   'm-content': {
     'padding': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
     'marginLeft': [{ 'unit': 'px', 'value': 0 }]
   },
   'styles_modal__gNwvD': {
-    'height': [{ 'unit': 'string', 'value': 'auto' }]
+    'height': [{ 'unit': 'string', 'value': 'auto' }],
+    'marginLeft': [{ 'unit': 'px', 'value': 310 }, { 'unit': 'string', 'value': '!important' }]
+  },
+  'modal-head': {
+    'textAlign': 'center'
   }
 });

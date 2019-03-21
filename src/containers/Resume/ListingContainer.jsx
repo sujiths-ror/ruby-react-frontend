@@ -222,7 +222,7 @@ handleChangeMapping = (e) => {
   render() {
 
     const { question, value, edit, id,open } = this.state
-
+    console.log("----->",this.props)
     return (
       <div>
 

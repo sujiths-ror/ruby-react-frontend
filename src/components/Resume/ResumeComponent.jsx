@@ -14,7 +14,7 @@ const ResumeComponent = props => (
             <div className=" justify-content-center shadow left col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <div className="box left p-2">
             <div className="box-title">
-              <h3>Question Answers</h3>
+              <h3 className= " modal-head mt-4">Question Answers</h3>
             </div>
             <Form onSubmit={e => props.onSubmit(e)}>
               <div className="box-row">

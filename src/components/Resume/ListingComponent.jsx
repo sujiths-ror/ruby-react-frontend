@@ -21,9 +21,6 @@ class ListComponent extends Component{
        
     }
 
-    
-    
-
     async onOpenModal(){
       await this.props.getIndQuestions();
       this.setState({ open: true });
@@ -70,7 +67,7 @@ class ListComponent extends Component{
         return(
             <div > 
                 
-                <h6 className="main-title text-uppercase">Question List</h6>
+                <h3 className="main-title text-uppercase modal-head mt-4">Question List</h3>
                 <Button type="warning" className="btn btn-red float-right" onClick={setRedirect}  >+Create</Button>
                 <div className="card-box">
                <div className="form-group mb-0">
@@ -156,8 +153,8 @@ class ListComponent extends Component{
                    </td>
 
                 
-                   <td data-head="required">
-                     {e.required}
+                   <td data-head="data">
+                  { e.required.toString() }
                    </td>
 
 
@@ -173,9 +170,9 @@ class ListComponent extends Component{
 
                    
                    <td data-head="Action">
-                     <button className="btn btn-theme btn-sm" onClick={()=>{handleDelete(e.id),localStorage.setItem ("delid",e.id)}}>DELETE</button>
+                     <button className="btn btn-danger btn-sm" onClick={()=>handleDelete(e.id)}>DELETE</button>
                      {(edit == true)?<button className="btn btn-theme btn-sm" >Save</button>:
-                     <button className="btn btn-theme btn-sm" onClick={()=>{this.onOpenModal() ,localStorage.setItem ("id",e.id)}}>EDIT</button>
+                     <button className="btn btn-info btn-sm mt-2" onClick={()=>{this.onOpenModal() ,localStorage.setItem ("id",e.id)}}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;</button>
                   
                      
                      }
@@ -199,8 +196,9 @@ class ListComponent extends Component{
         <div className=" ">
           <div className="box left p-2">
         <div className="box-title">
-          <h3>Edit</h3>
+          <h4 className="modal-head"><b>EDIT</b></h4>
         </div>
+
         <Form >
           <div className="box-row">
             <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 left">
@@ -211,7 +209,7 @@ class ListComponent extends Component{
               <div className="right">
                 <div className="form-group">
                   <input type="text"
-                   className="form-control" 
+                   className="form-control input-text input-form" 
                    name="question"
                    value={questionEdit}
                    onChange={(e) =>
@@ -232,7 +230,7 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                <select className="options" value={question_typeEdit} onChange={e =>handleChangeQuestionType(e.target.value)}>
+                <select className="options-form" value={question_typeEdit} onChange={e =>handleChangeQuestionType(e.target.value)}>
                     <option value="volvo">---</option>
                     <option value={question_typeEdit}>{question_typeEdit}</option>
 
@@ -252,7 +250,7 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                <input type="number" className="form-control" 
+                <input type="number" className="form-control input-form" 
                 name="priority" 
                 value={priorityEdit}
                    onChange={e =>
@@ -273,7 +271,7 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                  <select className="options" value={teaming_stagesEdit}  onChange={e =>handleChangeTeamingStages(e)}>
+                  <select className="options-form" value={teaming_stagesEdit}  onChange={e =>handleChangeTeamingStages(e)}>
                     <option value="volvo">---</option>
                     <option value="norming">Norming</option>
                     <option value="forming">Forming</option>
@@ -294,7 +292,7 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                  <input type="text"  className="form-control" value={appearsEdit} name="appears" onChange={e =>handleChangeAppears(e)}  />
+                  <input type="text"  className="form-control input-form" value={appearsEdit} name="appears" onChange={e =>handleChangeAppears(e)}  />
                 </div>
               </div>
             </div>
@@ -308,7 +306,7 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                  <input type="number" className="form-control" 
+                  <input type="number" className="form-control input-form" 
                   name="frequency"
                   value={frequencyEdit}
                   onChange={e =>handleChangeFrequency(e)}  />
@@ -325,7 +323,7 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                  <select className="options"  value={(role_idEdit==2)?"both":(role_idEdit==1)?"user":(role_idEdit == 3)?"admin":null}
+                  <select className="options-form"  value={(role_idEdit==2)?"both":(role_idEdit==1)?"user":(role_idEdit == 3)?"admin":null}
                   onChange={(e)=>
                     handleChangeRole(e)
                   } >
@@ -348,11 +346,11 @@ class ListComponent extends Component{
             </div>
             <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 left text-right">
 
-              <div className="right">
-                <div className="form-group"   >
+              <div className="left">
+                <div className="form-group "   >
                   
-                    <input type="radio" name="true"    value = {requiredEdit} checked = {requiredEdit} onChange={handleChangeRequiredTrue} />  <span>True</span>
-                    <input type="radio" name="false"  value =  {!requiredEdit} checked = {!requiredEdit}  onChange={handleChangeRequiredFalse}  />  <span>False</span>
+                    <input type="radio" name="true" value = {requiredEdit} checked = {requiredEdit} onChange={handleChangeRequiredTrue} />  <span>True</span>
+                    <input type="radio" name="false" value =  {!requiredEdit} checked = {!requiredEdit}  onChange={handleChangeRequiredFalse}  />  <span>False</span>
 
                   
                 </div>
@@ -369,7 +367,7 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                  <select className="options" value={conditionsEdit}  onChange={(e) =>handleChangeConditions(e)}>
+                  <select className="options-form" value={conditionsEdit}  onChange={(e) =>handleChangeConditions(e)}>
                   <option value="-----">-----</option>
                   <option value="always">always</option>
                   <option value="rare">rare</option>
@@ -390,7 +388,7 @@ class ListComponent extends Component{
 
               <div className="right">
                 <div className="form-group">
-                <select className="options" 
+                <select className="options-form" 
                   name="mappings"
                   value={(mapping_idEdit == 1) ? "collaboration":(mapping_idEdit == 2) ? "engagement":(mapping_idEdit == 3) ? "communication":(mapping_idEdit == 4)?"trust":(mapping_idEdit == 5)?"resources":(mapping_idEdit == 6)?"clarity":(mapping_idEdit == 7)?"management":null}
                   onChange={(e)=>

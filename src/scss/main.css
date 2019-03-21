@@ -780,9 +780,21 @@ section.features {
   height: 33px;
   border: none; }
 
+.options-form {
+  width: 461px;
+  height: 33px;
+  border: none; }
+
+.input-form {
+  width: 461px !important; }
+
 .m-content {
   padding: 0px;
   margin-left: 0px; }
 
 .styles_modal__gNwvD {
-  height: auto; }
+  height: auto;
+  margin-left: 310px !important; }
+
+.modal-head {
+  text-align: center; }
